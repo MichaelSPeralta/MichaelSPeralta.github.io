@@ -88,14 +88,6 @@ document.getElementById("btn-start-recording").onclick = function () {
     let sourceImage = (document.getElementById("preview-img").style.display = "block");
     let sourceVideo = (document.getElementById("cont-vid").style.display = "none");
 
-    // Timer
-    var seconds = 0;
-    var el = document.getElementById("seconds-counter");
-
-    function myCounter() {
-      el.innerText = ++seconds;
-    }
-    var cancel = setInterval(myCounter, 1000);
   });
 };
 
@@ -103,6 +95,7 @@ document.getElementById("btn-start-recording").onclick = function () {
 document.getElementById("btn-stop-recording").onclick = function () {
   this.disabled = true;
   recorder.stopRecording(stopRecordingCallback);
+  document.getElementById("timer").style.display = "none";
   document.getElementById("btn-upload-record").style.display = "block";
   document.getElementById("btn-stop-recording").setAttribute("class", "capture-active-none");
   document.getElementById("repeat-capture").style.display = "block";
@@ -130,6 +123,8 @@ function stopRecordingCallback() {
     document.getElementById("btn-start-recording").style.display = "flex";
     document.getElementById("repeat-capture").style.display = "none";
     document.getElementById("btn-upload-record").style.display = "none";
+    document.getElementById("timer").style.display = "block";
+    document.getElementById("fulltime").style.display = "none";
   });
 
   let btnUpload = document.getElementById("btn-upload-record");
@@ -276,3 +271,65 @@ document.getElementById('backtoindex').addEventListener('click', () => {
   location.replace("https://michaelsperalta.github.io/index.html");
 })
 
+//Timer
+
+// Timer
+var count = 0; 
+var clearTime; 
+var seconds = 0, minutes = 0, hours = 0; 
+var clearState; 
+var secs, mins, gethours;
+
+
+function startWatch() {
+  if (seconds === 60) {
+    seconds = 0; minutes = minutes + 1;
+   } 
+   mins = (minutes < 10) ? ('0' + minutes + ':') : (minutes + ':');
+   if (minutes === 60) { 
+     minutes = 0; hours = hours + 1; 
+    }
+    gethours = (hours < 10) ? ('0' + hours + ':') : (hours + ':'); secs = (seconds < 10) ? ('0' + seconds) : (seconds);
+    var x = document.getElementById("timer"); 
+    x.innerHTML = gethours + mins + secs;
+    seconds++;
+    clearTime = setTimeout("startWatch( )", 1000);
+   }
+   // 
+  //  startWatch()
+   
+   function startTime() {
+     
+     if (seconds === 0 && minutes === 0 && hours === 0) {
+       var fulltime = document.getElementById("fulltime"); 
+       fulltime.style.display = "none";
+       this.style.display = "none";
+       startWatch();
+     } 
+     
+   }
+  //  startTime()
+   
+   document.getElementById("btn-start-recording").addEventListener('click', startTime); 
+   document.getElementById("btn-stop-recording").addEventListener('click', stopTime);
+   document.getElementById("fulltime").style.display = "none";
+
+function stopTime() { 
+    if (seconds !== 0 || minutes !== 0 || hours !== 0) {
+        var fulltime = document.getElementById("fulltime");
+        fulltime.style.display = "block";
+        var time = gethours + mins + secs;
+        fulltime.innerHTML = time;
+        seconds = 0; minutes = 0; hours = 0; secs = '0' + seconds; mins = '0' + minutes + ':'; gethours = '0' + hours + ':';
+        var x = document.getElementById("timer");
+       //  x.style.display = "none";
+        var stopTime = gethours + mins + secs; x.innerHTML = stopTime;
+       //  var showStart = document.getElementById('btn-start-recording');
+       //  showStart.style.display = "flex";
+       //  var showStop = document.getElementById("btn-stop-recording");
+       //  showStop.style.display = "flex";
+        clearTimeout(clearTime);
+        console.log("debug timer")
+    } 
+} 
+// stopTime()

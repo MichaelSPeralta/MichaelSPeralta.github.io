@@ -1105,6 +1105,10 @@ header .action a:active {
   padding: 7px 0;
 }
 
+#fulltime{
+  display: none;
+}
+
 .upload-window {
   width: 100%;
   height: 100%;

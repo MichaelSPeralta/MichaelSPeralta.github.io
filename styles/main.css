@@ -1214,6 +1214,9 @@ header .qwerty-night a:active {
   padding: 7px 0;
 }
 
+#fulltime{
+  display: none;
+}
 .control-btns {
   display: -webkit-box;
   display: -ms-flexbox;
