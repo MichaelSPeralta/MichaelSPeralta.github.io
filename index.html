@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Chakra+Petch&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link id="css-change" rel="stylesheet" href="./styles/main.css">
+
+    <title>GifOS</title>
+</head>
+
+<body id="body-bg" onload="triggerOnLoad()">
+    <section id="window-top" class="window-top">
+        <p>¡Bienvenidos/as a Guifos.com! ------ Donde los gif están.//////Número de visitas: 12.392.235</p>
+    </section>
+    <!--  -->
+    <section class="main-content">
+        <header>
+            <div id="logo-c" class="logo">
+                <!-- <a href="./index.html"></a> -->
+            </div>
+            <div class="action">
+                <button id="btn-dark" class="button">
+                    <a id="href-aux" href="./upload.html">Crear Guifos</a>
+                </button>
+                <div class="dropdown-menu">
+                    <!--  -->
+                    <div id="dropdown" class="dropdown">
+                        <button id="dropbtn" class="dropbtn">
+                            <span>Elegir tema</span>
+                        </button>
+                        <button id="dropbtn-img" class="dropbtn-img">
+                            <img src="./assets/dropdown.svg">
+                        </button>
+                    </div>
+                    <div id="dropdown-content" class="dropdown-content">
+                        <a id="modoDia" href="#">Sailor Day</a>
+                        <a id="modoNocturno" href="#">Sailor Night</a>
+                    </div>
+                    <!--  -->
+                </div>
+                <div id="qwerty" class="qwerty ac-st">
+                    <a href="./upload.html"><u>M</u>is Guifos</a>
+                </div>
+            </div>
+        </header>
+
+        <!--  -->
+        <section id="search" class="search">
+            <p id="window-middle" class="window-middle">Buscar</p>
+            <form id="form-search" class="form-search" name="myForm">
+                <input id="in-search" type="text" name="fname" > 
+                <button id="btn-search" type="submit" value="Submit" class="button-svg"><img src="./assets/lupa.svg"
+                        alt="">Buscar</button>
+                        <!-- value="Busca gifs, hashtags, temas, busca lo que quieras" -->
+            </form>
+            <div id="res-bus" class="res-bus">
+                <span id="myText" class="p-hardcode"></span>
+                <span id="myText2" class="p-hardcode"></span>
+                <span id="myText3" class="p-hardcode"></span>
+            </div>
+        </section>
+
+        <!--  -->
+        <section class="sugerencias">
+            <input class="input-class" type="text" placeholder="buscar" value="Hoy te sugerimos">
+            <div id="galeria-sm" class="out"></div>
+        </section>
+        <!--  -->
+        <section class="tendencias">
+            <input id="search-field" class="input-class" type="text" name="buscar" value="Tendencias">
+            <div id="tendencias" class="tendencias-out">
+            </div>
+        </section>
+        <!--  -->
+        <section class="out-search">
+            <div id="out" class="out"></div>
+            <!-- Aca se ejecuta la funcion search -->
+        </section>
+    </section>
+    <script src="./js/app.js"></script>
+    <script src="./js/dark-light.js"></script>
+</body>
+
+</html>
+

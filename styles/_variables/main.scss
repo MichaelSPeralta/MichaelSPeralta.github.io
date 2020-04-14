@@ -1,0 +1,99 @@
+@import "./_variables/main-light";
+@import "./_variables/upload-light";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Chakra Petch", sans-serif;
+  // background-color: #0c083e;
+}
+
+#body-night{
+  background-color: #0c083e;
+  // z-index: 99;
+}
+
+.main-content {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1em;
+}
+
+
+input {
+  margin: 1em;
+  padding: 10px;
+  max-width: 1057px;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #979797;
+  box-shadow: inset -2px -2px 0 0 #e6e6e6, inset 2px 2px 0 0 #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 22px;
+}
+
+input:active {
+  color: #0000;
+}
+
+.input-class{
+  max-width: none;
+  margin: 1em 0;
+}
+
+.logo{
+  width: 102.6px;
+  height: 64px;
+  background: url(../assets/gifOF_logo.png);
+  background-repeat: no-repeat;
+}
+
+.carga-none{
+  display: none;
+}
+
+.carga {
+  margin-top: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  background: #e6e6e6;
+  box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
+  .title{
+    background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+    color: #ffffff;
+    padding: 3px;
+    margin: 3px;
+    transform: translateY(3px);
+    p{
+      // padding: 5px;
+    }
+  }
+  .cont-win {
+    padding: 2em;
+
+    .main-cont {
+      display: flex;
+      justify-content: center;
+      .img-cont {
+        padding: 1em;
+      }
+      .text-cont {
+        padding: 1em;
+      }
+    }
+    .buttons {
+      display: flex;
+      justify-content: flex-end;
+      button{
+        margin-left: 1em;
+      }
+    }
+  }
+}

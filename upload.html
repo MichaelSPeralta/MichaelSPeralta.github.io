@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Chakra+Petch&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link id="css-change" rel="stylesheet" href="./styles/main.css">
+
+    <title>GifOS</title>
+</head>
+
+<body id="body-bg" onload="check()">
+    <section id="window-top" class="window-top">
+        <p>¡Bienvenidos/as a Guifos.com! ------ Donde los gif están.//////Número de visitas: 12.392.235</p>
+    </section>
+    <!--  -->
+    <section class="main-content">
+        <header>
+            <div id="logo-c" class="logo-c">
+                <div id="backtoindex" class="backtoindex">
+                    <!-- <a href="./index.html"></a> -->
+                </div>
+                <div class="logo"></div>
+            </div>
+            <div id="btn-main" class="action">
+                <div class="dropdown-menu">
+                    <!--  -->
+                    <div id="dropdown" class="dropdown">
+                        <button id="dropbtn" class="dropbtn">
+                            <span>Elegir tema</span>
+                        </button>
+                        <button id="dropbtn-img" class="dropbtn-img">
+                            <img src="./assets/dropdown.svg" alt="dropdown">
+                        </button>
+                    </div>
+                    <div id="dropdown-content" class="dropdown-content">
+                        <a id="modoDia" href="#">Sailor Day</a>
+                        <a id="modoNocturno" href="#">Sailor Night</a>
+                    </div>
+                    <!--  -->
+                </div>
+                <!-- <div id="qwerty" class="qwerty ac-st"> -->
+                <!-- <a href="./mis-gifos.html"><u>M</u>is Guifos</a> -->
+                <!-- </div> -->
+            </div>
+        </header>
+        <!-- Cargar GIF -->
+        <section id="cargaGif" class="carga">
+            <div class="title">
+                <p>Crear Gifos</p>
+            </div>
+            <div class="cont-win">
+                <div class="main-cont">
+                    <div class="img-cont">
+                        <img src="./assets/window-img.png" alt="">
+                    </div>
+                    <div class="text-cont">
+                        <p><strong>Aquí podrás crear tus propios guifos</strong></p> <br>
+                        <p>Crear tu <strong>guifo</strong> es muy fácil, graba cualquier imagen con tu cámara y obtén
+                            guifos personalizados. Los pasos para crear tu guifo son: </p> <br>
+                        <p><strong>1)</strong> Dar permisos de acceso a la cámara (sólo por el tiempo de uso) </p><br>
+                        <p><strong>2)</strong> Capturar tu momento guifo </p> <br>
+                        <p><strong>3)</strong> Revisar el momento </p> <br>
+                        <p><strong>4)</strong> Listo para subir y compartir! </p> <br>
+                        <p>¿Quieres comenzar a crear tu <strong>guifo</strong> ahora? </p><br>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button onclick="cancelGif()" class="btn-cancel">Cancelar</button>
+                    <button onclick="getStreamAndRecord()" class="button btn1">Comenzar</button>
+                </div>
+            </div>
+
+        </section>
+        <!-- Captura de video -->
+        <section>
+            <div id="record-win" class="win-capture-none">
+                <div class="title">
+                    <span id="record-title">Un Chequeo Antes De Empezar</span>
+                    <div class="close-svg">
+                    </div>
+                </div>
+                <div class="gif-cont">
+                    <video id="cont-vid"></video>
+                    <img id="preview-img">
+                    <div id="upload-window" class="upload-window">
+                        <img src="../src/assets/globe_img.png" alt="">
+                        <p>Estamos subiendo tu Gifo...</p>
+                        <div class="center-bar">
+                            <div class="progress-bar">
+                                <div class="charge-bar"></div>
+                            </div>
+                        </div>
+                        <p>Tiempo restante: <strike>38 años</strike> algunos minutos</p>
+                    </div>
+                    <div id="upload-success" class="upload-success">
+                    </div>
+                </div>
+                <div class="record-btn">
+                    <div id="seconds-counter" class="seconds-counter"> </div>
+                    <div class="control-btns">
+                        <div id="btn-start-recording" class="capture">
+                            <button class="img-btn"></button>
+                            <button class="capt-btn">Capturar</button>
+                        </div>
+                        <div id="btn-stop-recording" class="capture-active-none">
+                            <button class="img-btn"></button>
+                            <button class="capt-btn">Listo</button>
+                        </div>
+                        <div id="repeat-capture" class="repeat-capture">
+                            <button>Repetir Captura</button>
+                        </div>
+                        <div id="btn-upload-record" class="upload">
+                            <button class="capt-btn">Subir Gifo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Subida con exito -->
+        <section>
+            <div id="container-check-upload" class="container-check-upload">
+                <div class="title-container">
+                    <p>Guifo subido con éxito</p>
+                    <img src="./assets/button close.svg" alt="">
+                </div>
+                <div class="containers">
+                    <div class="container-b">
+                        <img id="img-pre">
+                        <p id="copyModal"></p>
+                    </div>
+                    <div class="container-a">
+                        <div class="botones-container">
+                            <p>Guifo creado con éxito</p>
+                            <button id="download-gif">Descargar Guifo</button>
+                            <button id="boton-embeber">Copiar enlace Guifo</button>
+                        </div>
+                        <!-- <div class="copy_link">Copy link</div> -->
+                        <div id="listo-btn" class="listo-btn">
+                            <button>Listo</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="gif-get" class="gif-get"></div>
+            </div>
+        </section>
+        <!--  Buscar -->
+        <section id="mis-gifos" class="mis-gifos">
+            <input type="text" name="buscar" value="Mis gifos">
+        </section>
+        <!-- Galeria Imagenes -->
+        <section class="favoritos">
+            <div id="galeria-api" class="container_mis_guifos">
+            </div>
+        </section>
+        
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/RecordRTC/5.5.8/RecordRTC.js"></script>
+    <script src="https://www.webrtc-experiment.com/gif-recorder.js"></script>
+    <script src="./js/recordRtc.js"></script>
+    <script src="./js/dark-light.js"></script>
+</body>
+
+</html>
