@@ -134,6 +134,11 @@ header .action a:active {
   min-height: 36px;
 }
 
+.dropdown .dropbtn-img img{
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+}
+
 .dropdown:hover .dropbtn {
   outline: 1px dotted #110038;
   outline-offset: -5px;
