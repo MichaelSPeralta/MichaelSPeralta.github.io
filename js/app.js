@@ -21,7 +21,7 @@ formSearch.addEventListener("submit", function (e) {
 // Conexión a la APÏ, función search-input.
 
 function search(inputSearch) {
-  const url = `http://api.giphy.com/v1/gifs/search?q=${inputSearch}&api_key=${apikey}&limit=12`;
+  const url = `https://api.giphy.com/v1/gifs/search?q=${inputSearch}&api_key=${apikey}&limit=12`;
 
   fetch(url)
     .then(function (res) {
@@ -58,7 +58,7 @@ function search(inputSearch) {
 // Función para cargar imagenes seccion sugeridos.
 
 function sugeridos() {
-  const url = `http://api.giphy.com/v1/gifs/search?q=random&api_key=${apikey}&limit=4`;
+  const url = `https://api.giphy.com/v1/gifs/search?q=random&api_key=${apikey}&limit=4`;
 
   fetch(url)
     .then((response) => {
@@ -98,7 +98,7 @@ sugeridos();
 // Función para cargar imagenes seccion tendencias.
 
 function tendencia() {
-  const url = `http://api.giphy.com/v1/gifs/search?q=russian&api_key=${apikey}&limit=12`;
+  const url = `https://api.giphy.com/v1/gifs/search?q=russian&api_key=${apikey}&limit=12`;
 
   fetch(url)
     .then((response) => {
