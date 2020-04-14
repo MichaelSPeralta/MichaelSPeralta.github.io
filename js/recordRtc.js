@@ -267,12 +267,12 @@ document.getElementById("download-gif").addEventListener("click", (file, text) =
 
 // Boton Listo
 document.getElementById("listo-btn").addEventListener("click", () => {
-  location.replace("http://127.0.0.1:5500/src/upload.html");
+  location.replace("https://michaelsperalta.github.io/upload.html");
   let doc = document.getElementById('mis-gifos');
   doc.scrollIntoView();
 });
 
 document.getElementById('backtoindex').addEventListener('click', () => {
-  location.replace("http://127.0.0.1:5500/src/index.html");
+  location.replace("https://michaelsperalta.github.io/index.html");
 })
 
