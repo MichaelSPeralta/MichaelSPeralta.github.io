@@ -903,15 +903,15 @@ animation: lala 3s infinite;
 }
 
 .win-capture .gif-cont video {
-  width: 100%;
+  width: 838px;
   height: 100%;
   padding: 2px;
 }
 
 .win-capture .gif-cont img {
   display: none;
-  width: 75%;
-  height: 100%;
+  width: 838px;
+  height: 440px;
   padding: 2px;
   margin-left: auto;
   margin-right: auto;

@@ -63,7 +63,7 @@ document.getElementById("btn-start-recording").onclick = function () {
       type: "gif",
       frameRate: 1,
       quality: 10,
-      width: 838,
+      width: 338,
       hidden: 240,
       onGifRecordingStarted: function () {
         console.log("started");
