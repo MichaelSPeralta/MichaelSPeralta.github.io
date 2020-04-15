@@ -78,16 +78,20 @@ document.getElementById("btn-start-recording").onclick = function () {
     document.getElementById("btn-stop-recording").disabled = false;
 
     // Estilos botones
-    document.getElementById("btn-stop-recording").setAttribute("class", "capture-active");
+    document
+      .getElementById("btn-stop-recording")
+      .setAttribute("class", "capture-active");
     document.getElementById("btn-start-recording").style.display = "none";
 
     // Cambio titulo de texto
-    let title = (document.getElementById("record-title").innerHTML = "Capturando tu Gifo");
+    let title = (document.getElementById("record-title").innerHTML =
+      "Capturando tu Gifo");
 
     // Interacción entre tags IMG - VIDEO
-    let sourceImage = (document.getElementById("preview-img").style.display = "block");
-    let sourceVideo = (document.getElementById("cont-vid").style.display = "none");
-
+    let sourceImage = (document.getElementById("preview-img").style.display =
+      "block");
+    let sourceVideo = (document.getElementById("cont-vid").style.display =
+      "none");
   });
 };
 
@@ -97,7 +101,9 @@ document.getElementById("btn-stop-recording").onclick = function () {
   recorder.stopRecording(stopRecordingCallback);
   document.getElementById("timer").style.display = "none";
   document.getElementById("btn-upload-record").style.display = "block";
-  document.getElementById("btn-stop-recording").setAttribute("class", "capture-active-none");
+  document
+    .getElementById("btn-stop-recording")
+    .setAttribute("class", "capture-active-none");
   document.getElementById("repeat-capture").style.display = "block";
   document.getElementById("record-title").innerHTML = "Vista previa";
 };
@@ -146,7 +152,8 @@ function stopRecordingCallback() {
         console.log(res.status);
         if (res.status == 200) {
           console.log("Subida con exito!");
-          document.getElementById('container-check-upload').style.display = "block";
+          document.getElementById("container-check-upload").style.display =
+            "block";
         }
         return res.json();
       })
@@ -164,18 +171,31 @@ function stopRecordingCallback() {
             return res.json();
           })
           .then((data) => {
+            console.log(data);
             localStorage.setItem("gifo" + data.data.id, JSON.stringify(data));
-            document.getElementById("gif-get").src = data.data.images.fixed_height.url;
-            document.getElementById("record-win").setAttribute("class", "win-capture-none");
-            document.getElementById("boton-embeber").addEventListener("click", (file, text) => {
-              navigator.clipboard.writeText(data.data.embed_url);
-              copyModal.innerHTML = "Código copiado con éxito!"; 
-              setTimeout(() => {
-                copyModal.innerHTML = "";
-              }, 3000);
-            });
-           
-            console.log(data)
+            document.getElementById("gif-get").src =
+              data.data.images.fixed_height.url;
+            document
+              .getElementById("record-win")
+              .setAttribute("class", "win-capture-none");
+            document
+              .getElementById("boton-embeber")
+              .addEventListener("click", (file, text) => {
+                navigator.clipboard.writeText(data.data.embed_url);
+                copyModal.innerHTML = "Código copiado con éxito!";
+                setTimeout(() => {
+                  copyModal.innerHTML = "";
+                }, 3000);
+              });
+
+            //Btn Download
+            let div = document.getElementById("download-gif");
+            let newlink = document.createElement("a");
+            div.appendChild(newlink);
+            newlink.setAttribute("href", data.data.images.original_still.url);
+            newlink.setAttribute("download", "migifo");
+
+            console.log(data);
             console.log("Traigo GIF desde la api");
           })
           .catch((error) => {
@@ -184,39 +204,11 @@ function stopRecordingCallback() {
           });
       });
   });
-  document.getElementById('img-pre').src = image.src;
+  document.getElementById("img-pre").src = image.src;
   recorder.camera.stop();
   recorder.destroy();
   recorder = null;
 }
-
-//
-// Download
-function downloadFile(data, fileName, type="text/plain") {
-  // Create an invisible A element
-  const a = document.createElement("a");
-  a.style.display = "none";
-  document.body.appendChild(a);
-
-  // Set the HREF to a Blob representation of the data to be downloaded
-  a.href = window.URL.createObjectURL(
-    new Blob(image.src, gif)
-    
-  );
-
-  // Use download attribute to set set desired file name
-  a.setAttribute("download", fileName);
-
-  // Trigger the download by simulating click
-  a.click();
-
-  // Cleanup
-  window.URL.revokeObjectURL(a.href);
-  document.body.removeChild(a);
-}
-//
-//
-
 
 // Traigo Gif desde el localStorage
 
@@ -249,87 +241,81 @@ window.addEventListener("load", () => {
   });
 });
 
-// Subida de GIFO con exito
-document.getElementById("download-gif").addEventListener("click", (file, text) => {
-  var element = document.createElement('a'); 
-        element.setAttribute('href', 'data:text/plain;charset=utf-8, '  + encodeURIComponent(text)); 
-        element.setAttribute('download', file); 
-        document.body.appendChild(element);
-
-        var text = document.getElementById("text"); 
-                    var filename = "GFG.txt"; 
-});
-
 // Boton Listo
 document.getElementById("listo-btn").addEventListener("click", () => {
   location.replace("https://michaelsperalta.github.io/upload.html");
-  let doc = document.getElementById('mis-gifos');
+  let doc = document.getElementById("mis-gifos");
   doc.scrollIntoView();
 });
 
-document.getElementById('backtoindex').addEventListener('click', () => {
+document.getElementById("backtoindex").addEventListener("click", () => {
   location.replace("https://michaelsperalta.github.io/index.html");
-})
-
-//Timer
+});
 
 // Timer
-var count = 0; 
-var clearTime; 
-var seconds = 0, minutes = 0, hours = 0; 
-var clearState; 
+var count = 0;
+var clearTime;
+var seconds = 0,
+  minutes = 0,
+  hours = 0;
+var clearState;
 var secs, mins, gethours;
-
 
 function startWatch() {
   if (seconds === 60) {
-    seconds = 0; minutes = minutes + 1;
-   } 
-   mins = (minutes < 10) ? ('0' + minutes + ':') : (minutes + ':');
-   if (minutes === 60) { 
-     minutes = 0; hours = hours + 1; 
-    }
-    gethours = (hours < 10) ? ('0' + hours + ':') : (hours + ':'); secs = (seconds < 10) ? ('0' + seconds) : (seconds);
-    var x = document.getElementById("timer"); 
-    x.innerHTML = gethours + mins + secs;
-    seconds++;
-    clearTime = setTimeout("startWatch( )", 1000);
-   }
-   // 
-  //  startWatch()
-   
-   function startTime() {
-     
-     if (seconds === 0 && minutes === 0 && hours === 0) {
-       var fulltime = document.getElementById("fulltime"); 
-       fulltime.style.display = "none";
-       this.style.display = "none";
-       startWatch();
-     } 
-     
-   }
-  //  startTime()
-   
-   document.getElementById("btn-start-recording").addEventListener('click', startTime); 
-   document.getElementById("btn-stop-recording").addEventListener('click', stopTime);
-   document.getElementById("fulltime").style.display = "none";
+    seconds = 0;
+    minutes = minutes + 1;
+  }
+  mins = minutes < 10 ? "0" + minutes + ":" : minutes + ":";
+  if (minutes === 60) {
+    minutes = 0;
+    hours = hours + 1;
+  }
+  gethours = hours < 10 ? "0" + hours + ":" : hours + ":";
+  secs = seconds < 10 ? "0" + seconds : seconds;
+  var x = document.getElementById("timer");
+  x.innerHTML = gethours + mins + secs;
+  seconds++;
+  clearTime = setTimeout("startWatch( )", 1000);
+}
+//
+//  startWatch()
 
-function stopTime() { 
-    if (seconds !== 0 || minutes !== 0 || hours !== 0) {
-        var fulltime = document.getElementById("fulltime");
-        fulltime.style.display = "block";
-        var time = gethours + mins + secs;
-        fulltime.innerHTML = time;
-        seconds = 0; minutes = 0; hours = 0; secs = '0' + seconds; mins = '0' + minutes + ':'; gethours = '0' + hours + ':';
-        var x = document.getElementById("timer");
-       //  x.style.display = "none";
-        var stopTime = gethours + mins + secs; x.innerHTML = stopTime;
-       //  var showStart = document.getElementById('btn-start-recording');
-       //  showStart.style.display = "flex";
-       //  var showStop = document.getElementById("btn-stop-recording");
-       //  showStop.style.display = "flex";
-        clearTimeout(clearTime);
-        console.log("debug timer")
-    } 
-} 
-// stopTime()
+function startTime() {
+  if (seconds === 0 && minutes === 0 && hours === 0) {
+    var fulltime = document.getElementById("fulltime");
+    fulltime.style.display = "none";
+    this.style.display = "none";
+    startWatch();
+  }
+}
+//  startTime()
+
+document
+  .getElementById("btn-start-recording")
+  .addEventListener("click", startTime);
+document
+  .getElementById("btn-stop-recording")
+  .addEventListener("click", stopTime);
+document.getElementById("fulltime").style.display = "none";
+
+function stopTime() {
+  if (seconds !== 0 || minutes !== 0 || hours !== 0) {
+    var fulltime = document.getElementById("fulltime");
+    fulltime.style.display = "block";
+    var time = gethours + mins + secs;
+    fulltime.innerHTML = time;
+    seconds = 0;
+    minutes = 0;
+    hours = 0;
+    secs = "0" + seconds;
+    mins = "0" + minutes + ":";
+    gethours = "0" + hours + ":";
+    var x = document.getElementById("timer");
+    var stopTime = gethours + mins + secs;
+    x.innerHTML = stopTime;
+    clearTimeout(clearTime);
+    console.log("debug timer");
+  }
+}
+
