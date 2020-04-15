@@ -194,9 +194,6 @@ function stopRecordingCallback() {
             div.appendChild(newlink);
             newlink.setAttribute("href", data.data.images.original_still.url);
             newlink.setAttribute("download", "migifo");
-
-            console.log(data);
-            console.log("Traigo GIF desde la api");
           })
           .catch((error) => {
             console.log("Error al traer el gifos desde GIPHY");
